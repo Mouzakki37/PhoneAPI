@@ -1,0 +1,32 @@
+# Type représentant un Phone DTO
+type PhoneDTO {
+    model: String
+    color: String
+    IMEI: String
+    price: Float
+}
+# Input type representing a Phone (used for input)
+input PhoneInput {
+    model: String
+    color: String
+    IMEI: String
+    price: Float
+}
+
+# Définitions des requêtes
+type Query {
+    # Récupère les téléphones par modèle
+    getPhoneByModel(model: String): [PhoneDTO]
+
+    # Récupère les téléphones par modèle et prix
+    getPhoneByModelAndPrice(model: String, price: Float): [PhoneDTO]
+}
+
+# Définitions des mutations
+type Mutation {
+    # Ajoute un nouveau téléphone
+    savePhone(phone: PhoneInput): PhoneDTO
+
+    # Supprime un téléphone par ID
+    deletePhone(id: ID): PhoneDTO
+}
