@@ -7,6 +7,7 @@ import com.example.TP_Revision.service.mappers.PhoneMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PhoneManagerAction implements PhoneManager{
@@ -28,11 +29,17 @@ public class PhoneManagerAction implements PhoneManager{
 
     @Override
     public List<PhoneDTO> getPhonesByModel(String model) {
-        return null;
+        return phoneRepository.findByModel(model)
+                .stream()
+                .map(phoneMapper::toDTO)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public List<PhoneDTO> getPhoneByModelAndPrice(String model, float price) {
-        return null;
+    public List<PhoneDTO> getPhonesByModelAndPrice(String model, float price) {
+        return phoneRepository.findByModelAndPrice(model, price)
+                .stream()
+                .map(phoneMapper::toDTO)
+                .collect(Collectors.toList());
     }
 }

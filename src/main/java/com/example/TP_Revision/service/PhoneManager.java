@@ -8,6 +8,6 @@ public interface PhoneManager {
     PhoneDTO savePhone(PhoneDTO phoneDTO);
     void deletePhone(Long id);
     List<PhoneDTO> getPhonesByModel(String model);
-    List<PhoneDTO> getPhoneByModelAndPrice( String model, float price);
+    List<PhoneDTO> getPhonesByModelAndPrice( String model, float price);
 
 }
